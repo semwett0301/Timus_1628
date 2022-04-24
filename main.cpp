@@ -38,7 +38,7 @@ int main() {
     }
 
     sort(cells.begin(), cells.end(), comp_by_rows);
-    for (int i = 0; i < cells.size() - 1; i++) {
+    for (int i = 0; i < p + n * 2 + m * 2; i++) {
         int diff = cells[i + 1].second - cells[i].second;
         if (cells[i].first == cells[i + 1].first && diff >= 2) {
             if (diff == 2) {
@@ -52,7 +52,7 @@ int main() {
     }
 
     sort(cells.begin(), cells.end(), comp_by_columns);
-    for (int i = 0; i < cells.size() - 1; i++) {
+    for (int i = 0; i < p + n * 2 + m * 2; i++) {
         int diff = cells[i + 1].first - cells[i].first;
         if (cells[i].second == cells[i + 1].second && diff >= 2) {
             if (diff == 2) {
