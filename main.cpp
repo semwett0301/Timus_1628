@@ -19,7 +19,7 @@ bool comp_by_columns(pair<int, int> first_cell, pair<int, int> second_cell) {
 int main() {
     int m, n, p;
     int result = 0;
-    cin >> m >> n >> p;
+    cin >> n >> m >> p;
     vector<pair<int, int>> cells;
     set<pair<int, int>> duplicates;
     for (int i = 0; i < p; ++i) {
@@ -30,7 +30,7 @@ int main() {
 
     for (int i = 1; i <= m; i++) {
         cells.emplace_back(0, i);
-        cells.emplace_back(i, n + 1);
+        cells.emplace_back(n + 1, i);
     }
     for (int i = 1; i <= n; i++) {
         cells.emplace_back(i, 0);
@@ -38,7 +38,7 @@ int main() {
     }
 
     sort(cells.begin(), cells.end(), comp_by_rows);
-    for (int i = 0; i < cells.size() + 1; i++) {
+    for (int i = 0; i < cells.size() - 1; i++) {
         int diff = cells[i + 1].second - cells[i].second;
         if (cells[i].first == cells[i + 1].first && diff >= 2) {
             if (diff == 2) {
@@ -52,7 +52,7 @@ int main() {
     }
 
     sort(cells.begin(), cells.end(), comp_by_columns);
-    for (int i = 0; i < cells.size() + 1; i++) {
+    for (int i = 0; i < cells.size() - 1; i++) {
         int diff = cells[i + 1].first - cells[i].first;
         if (cells[i].second == cells[i + 1].second && diff >= 2) {
             if (diff == 2) {
